@@ -1,0 +1,2250 @@
+
+
+
+<button id="1" onclick="AA()">&nbsp</button><button id="2" onclick="AB()">&nbsp</button><button id="3" onclick="AC()">&nbsp</button><button id="4" onclick="AD()">&nbsp</button><button id="5" onclick="AE()">&nbsp</button><button id="6" onclick="AF()">&nbsp</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button onclick="levelone()">Level 1</button> <button onclick="leveltwo()">Level 2</button><button onclick="levelthree()">Level 3</button><button onclick="levelfour()">Level 4</button><br>
+    <button id="7" onclick="AG()">&nbsp</button><button id="8" onclick="AH()">&nbsp</button><button id="9" onclick="AI()">&nbsp</button><button id="10" onclick="AJ()">&nbsp</button><button id="11" onclick="AK()">&nbsp</button><button id="12" onclick="Al()">&nbsp</button>  <br>
+        <button id="13" onclick="AM()">&nbsp</button><button id="14" onclick="AN()">&nbsp</button><button id="15" onclick="AO()">&nbsp</button><button id="16" onclick="AP()">&nbsp</button><button id="17" onclick="AQ()">&nbsp</button><button id="18" onclick="AR()">&nbsp</button>  <br>
+            <button id="19" onclick="AS()">&nbsp</button><button id="20" onclick="AT()">&nbsp</button><button id="21" onclick="AU()">&nbsp</button><button id="22" onclick="AV()">&nbsp</button><button id="23" onclick="AW()">&nbsp</button><button id="24" onclick="AX()">&nbsp</button>  <br>
+                <button id="25" onclick="AY()"">&nbsp</button><button id="26" onclick="AZ()">&nbsp</button><button id="27" onclick="BA()">&nbsp</button><button id="28" onclick="BB()">&nbsp</button><button id="29" onclick="BC()">&nbsp</button><button id="30" onclick="BD()">&nbsp</button>  <br>
+                    <button id="31" onclick="BE()">&nbsp</button><button id="32" onclick="BF()">&nbsp</button><button id="33" onclick="BG()">&nbsp</button><button id="34" onclick="BH()">&nbsp</button><button id="35" onclick="BI()">&nbsp</button><button id="36" onclick="BJ()">&nbsp</button>  <br>
+
+                    <style>
+
+       
+
+     
+        
+                        
+                
+                
+                    </style>
+
+                    <div id="Movmcon">
+                        <br>
+                        <img src="Assets/Arrowempty.png"  width="37" height="37"> </img><img src="Assets/Arrowup.png" alt="Up button" onclick="moveup()" width="37" height="37"> </img>  <img src="Assets/Arrowempty.png"  width="37" height="37"> </img>
+                        <br>
+                        <img  src="Assets/Arrowleft.png" alt="Left button" onclick="moveleft()" width="37" height="37"></img>     <img src="Assets/Arrowempty.png"  width="37" height="37"> </img>         <img  src="Assets/Arrowright.png" alt="Right button" onclick="moveright()" width="37" height="37"></img>
+                        <br>
+                        <img src="Assets/Arrowempty.png"  width="37" height="37"> </img><img src="Assets/Arrowdown.png" alt="Down button" onclick="movedown()" width="37" height="37"> </img>  <img src="Assets/Arrowempty.png"  width="37" height="37"> </img>
+                        <br>
+                
+                
+                
+                
+        
+    </div>
+    <hr>
+    <img src="Assets/mode swap.png" alt="Modeswap" onclick="Modeswap()" width="74" height="37"> </img> Kinda buggy at the moment
+    <hr>
+    <span id="instrucrions"></span>
+
+
+
+        <script>
+            
+          
+        let state = {};
+        state.endsquares=[36]
+
+        state.modeswap=0
+        function Modeswap(){
+            
+
+            if (state.modeswap == 0){
+            state.modeswap=1
+            console.log(state.modeswap)
+            document.getElementById(state.startsquare).style="background-color: limegreen";
+            document.getElementById(state.playerpos).style="background-color: transparent";
+            render()
+            document.getElementById("Movmcon").hidden=true;
+            document.getElementById("instrucrions").innerText="Click on squares to cycle through kinds of tiles to edit the level, Green: You, Blue: goal, Black: blocked square, Clear: open squares";
+
+            }
+            else{
+                state.modeswap=0
+                console.log(state.modeswap)
+                document.getElementById("Movmcon").hidden=false;
+                document.getElementById(state.playerpos).style="background-color: transparent";
+                
+                document.getElementById("instrucrions").innerText="Get the green square to a blue square";
+
+
+
+
+
+
+for (let step = 0; step < (state.endsquares.length); step++) {
+            document.getElementById(state.endsquares[step]).style="background-color: blue";
+        }
+    
+
+for (let step = 0; step < (state.badsquares.length); step++) {
+    document.getElementById(state.badsquares[step]).style="background-color: black";
+}
+
+
+    
+state.playerpos=state.startsquare
+document.getElementById(state.playerpos).style="background-color: limegreen";
+
+document.getElementById(state.endsquare).style="background-color: blue";
+            }
+        }
+
+        document.getElementById("1").style="background-color: black";
+
+
+        //Level data
+        state.badsquares=[
+            1,
+            8,
+            3,
+            25,
+            1
+            ]
+
+        state.startsquare=31
+
+        state.endsquare=36
+
+      
+        for (let stepw = 1; stepw < (36); stepw++) {
+            document.getElementById(stepw).style="background-color: transparent";
+        }
+
+        for (let step = 0; step < (state.endsquares.length); step++) {
+            document.getElementById(state.endsquares[step]).style="background-color: blue";
+        }
+
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+
+        for (let step = 0; step < (state.endsquares.length); step++) {
+            document.getElementById(state.endsquares[step]).style="background-color: blue";
+        }
+
+
+            
+        state.playerpos=state.startsquare
+        document.getElementById(state.playerpos).style="background-color: limegreen";
+
+        for (let step = 0; step < (state.endsquares.length); step++) {
+            document.getElementById(state.endsquares[step]).style="background-color: blue";
+        }
+
+    function moveup(){
+        state.playerposcache=state.playerpos
+        
+
+       
+
+        getdistance()
+        for (let step = 0; step < (state.squares); step++) {
+            state.playerposcache=state.playerpos
+        
+            document.getElementById(state.playerpos).style="background-color: transparent";
+        state.playerpos-=6
+        if (state.badsquares.includes(state.playerpos)){
+            for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+
+document.getElementById(state.playerposcache).style="background-color: limegreen";
+
+state.playerpos = state.playerposcache
+
+
+        }
+        
+        else{
+
+            oktomove()  
+          if (state.ok == 1){
+
+        document.getElementById(state.playerpos).style="background-color: limegreen";
+          }
+          else{
+            document.getElementById(state.playerposcache).style="background-color: limegreen";
+
+state.playerpos = state.playerposcache
+
+          }
+        
+          Checkforwin()
+    }
+}
+    }
+    
+
+    function movedown(){
+        state.playerposcache=state.playerpos
+        
+        getdistance()
+        for (let step = 0; step < (state.squares); step++) {
+            state.playerposcache=state.playerpos
+
+        document.getElementById(state.playerpos).style="background-color: transparent";
+
+
+        state.playerpos+=6
+        if (state.badsquares.includes(state.playerpos)){
+            for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+
+document.getElementById(state.playerposcache).style="background-color: limegreen";
+
+state.playerpos = state.playerposcache
+
+
+        }
+        
+        else{
+
+            oktomove()  
+          if (state.ok == 1){
+
+        document.getElementById(state.playerpos).style="background-color: limegreen";
+          }
+          else{
+            document.getElementById(state.playerposcache).style="background-color: limegreen";
+
+state.playerpos = state.playerposcache
+
+          }
+          Checkforwin()
+        
+        
+    }
+}
+    }
+
+
+
+    function moveright(){
+        state.playerposcache=state.playerpos
+        
+        getdistance()
+        for (let step = 0; step < (state.squares); step++) {
+            state.playerposcache=state.playerpos
+
+        document.getElementById(state.playerpos).style="background-color: transparent";
+
+
+        state.playerpos+=1
+        if (state.badsquares.includes(state.playerpos)){
+            for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+
+document.getElementById(state.playerposcache).style="background-color: limegreen";
+
+state.playerpos = state.playerposcache
+
+
+        }
+        
+        else{
+
+            
+          oktomove()  
+          if (state.ok == 1){
+
+        document.getElementById(state.playerpos).style="background-color: limegreen";
+          }
+          else{
+            document.getElementById(state.playerposcache).style="background-color: limegreen";
+
+state.playerpos = state.playerposcache
+
+          }
+          Checkforwin()
+        
+    }
+    }
+}
+
+    function moveleft(){
+        state.playerposcache=state.playerpos
+        
+        getdistance()
+        for (let step = 0; step < (state.squares); step++) {
+            state.playerposcache=state.playerpos
+
+
+        document.getElementById(state.playerpos).style="background-color: transparent";
+
+
+        state.playerpos-=1
+        if (state.badsquares.includes(state.playerpos)){
+            for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+
+document.getElementById(state.playerposcache).style="background-color: limegreen";
+
+state.playerpos = state.playerposcache
+
+
+        }
+        
+        else{
+
+            oktomove()  
+          if (state.ok == 1){
+
+        document.getElementById(state.playerpos).style="background-color: limegreen";
+          }
+          else{
+            document.getElementById(state.playerposcache).style="background-color: limegreen";
+
+state.playerpos = state.playerposcache
+
+          }
+          Checkforwin()
+        
+        
+    }
+    }
+}
+
+ function oktomove(){
+
+    state.ok=1
+    
+    if (state.playerposcache == 6 ) {
+        if(state.playerpos==7){
+            state.ok=0
+        }
+    }
+
+        if (state.playerposcache == 12 ) {
+        if(state.playerpos==13){
+            state.ok=0
+        }
+    }
+
+    if (state.playerposcache == 18 ) {
+        if(state.playerpos==19){
+            state.ok=0
+        }
+    }
+
+    if (state.playerposcache == 24 ) {
+        if(state.playerpos==25){
+            state.ok=0
+        }
+    }
+    
+    if (state.playerposcache == 30 ) {
+        if(state.playerpos==31){
+            state.ok=0
+        }
+    }
+
+
+    if (state.playerposcache == 7 ) {
+        if(state.playerpos==6){
+            state.ok=0
+        }
+    }
+        if (state.playerposcache == 13 ) {
+        if(state.playerpos==12){
+            state.ok=0
+        }
+ }
+
+ if (state.playerposcache == 19 ) {
+        if(state.playerpos==18){
+            state.ok=0
+        }
+    }
+
+    if (state.playerposcache == 25 ) {
+        if(state.playerpos==24){
+            state.ok=0
+        }
+    }
+
+    if (state.playerposcache == 31 ) {
+        if(state.playerpos==30){
+            state.ok=0
+        }
+    }
+
+
+ if (state.playerpos>36){
+    state.ok=0
+ }
+
+ if (state.playerpos<1){
+    state.ok=0
+ }
+
+
+
+
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+
+
+function getdistance(){
+
+    state.option=getRandomInt(2)
+    state.option++;
+
+
+    if (state.option == 1){
+
+    state.h=(getRandomInt(12));
+    state.h++;
+    state.part1= window.prompt('Enter the number of squares you want to move multiplied by '.concat(state.h));
+    state.squares=(state.part1/state.h)
+    }
+
+    if (state.option == 2){
+
+
+state.part1= window.prompt('What is the distance Squared? ');
+if (state.part1 == 1){
+    state.squares=1
+}
+if (state.part1 == 4){
+    state.squares=2
+}
+if (state.part1 == 9){
+    state.squares=3
+}
+if (state.part1 == 16){
+    state.squares=4
+}
+if (state.part1 == 25){
+    state.squares=5
+}
+if (state.part1 == 36){
+    state.squares=6
+}
+
+}
+}
+
+function Checkforwin(){
+    if (state.endsquares.includes(state.playerpos)){
+        
+        alert('YOU WIN')
+    }
+}
+
+function AA(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(1)){
+        state.badsquares.splice((state.badsquares.indexOf(1)))
+        document.getElementById(1).style="background-color: blue";
+        state.endsquares.push(1)
+    }
+    else{
+        if (state.endsquares.includes(1)){
+            document.getElementById(1).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(1)))
+       
+            }
+        
+            else{
+                state.badsquares.push(1)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(1)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(1)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AB(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(2)){
+        state.badsquares.splice((state.badsquares.indexOf(2)))
+        document.getElementById(2).style="background-color: blue";
+        state.endsquares.push(2)
+    }
+    else{
+        if (state.endsquares.includes(2)){
+            document.getElementById(2).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(2)))
+       
+            }
+        
+            else{
+                state.badsquares.push(2)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(2)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(2)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AC(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(3)){
+        state.badsquares.splice((state.badsquares.indexOf(3)))
+        document.getElementById(3).style="background-color: blue";
+        state.endsquares.push(3)
+    }
+    else{
+        if (state.endsquares.includes(3)){
+            document.getElementById(3).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(3)))
+       
+            }
+        
+            else{
+                state.badsquares.push(3)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(3)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(3)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AD(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(4)){
+        state.badsquares.splice((state.badsquares.indexOf(4)))
+        document.getElementById(4).style="background-color: blue";
+        state.endsquares.push(4)
+    }
+    else{
+        if (state.endsquares.includes(4)){
+            document.getElementById(4).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(4)))
+       
+            }
+        
+            else{
+                state.badsquares.push(4)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(4)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(4)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AE(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(5)){
+        state.badsquares.splice((state.badsquares.indexOf(5)))
+        document.getElementById(5).style="background-color: blue";
+        state.endsquares.push(5)
+    }
+    else{
+        if (state.endsquares.includes(5)){
+            document.getElementById(5).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(5)))
+       
+            }
+        
+            else{
+                state.badsquares.push(5)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(5)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(5)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+function AF(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(6)){
+        state.badsquares.splice((state.badsquares.indexOf(6)))
+        document.getElementById(6).style="background-color: blue";
+        state.endsquares.push(6)
+    }
+    else{
+        if (state.endsquares.includes(6)){
+            document.getElementById(6).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(6)))
+       
+            }
+        
+            else{
+                state.badsquares.push(6)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(6)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(6)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+function AG(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(7)){
+        state.badsquares.splice((state.badsquares.indexOf(7)))
+        document.getElementById(7).style="background-color: blue";
+        state.endsquares.push(7)
+    }
+    else{
+        if (state.endsquares.includes(7)){
+            document.getElementById(7).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(7)))
+       
+            }
+        
+            else{
+                state.badsquares.push(7)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(7)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(7)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AH(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(8)){
+        state.badsquares.splice((state.badsquares.indexOf(8)))
+        document.getElementById(8).style="background-color: blue";
+        state.endsquares.push(8)
+    }
+    else{
+        if (state.endsquares.includes(8)){
+            document.getElementById(8).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(8)))
+       
+            }
+        
+            else{
+                state.badsquares.push(8)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(8)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(8)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+function AI(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(9)){
+        state.badsquares.splice((state.badsquares.indexOf(9)))
+        document.getElementById(9).style="background-color: blue";
+        state.endsquares.push(9)
+    }
+    else{
+        if (state.endsquares.includes(9)){
+            document.getElementById(9).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(9)))
+       
+            }
+        
+            else{
+                state.badsquares.push(9)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(9)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(9)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+function AJ(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(10)){
+        state.badsquares.splice((state.badsquares.indexOf(10)))
+        document.getElementById(10).style="background-color: blue";
+        state.endsquares.push(10)
+    }
+    else{
+        if (state.endsquares.includes(10)){
+            document.getElementById(10).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(10)))
+       
+            }
+        
+            else{
+                state.badsquares.push(10)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(10)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(10)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AK(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(11)){
+        state.badsquares.splice((state.badsquares.indexOf(11)))
+        document.getElementById(11).style="background-color: blue";
+        state.endsquares.push(11)
+    }
+    else{
+        if (state.endsquares.includes(11)){
+            document.getElementById(11).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(11)))
+       
+            }
+        
+            else{
+                state.badsquares.push(11)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(11)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(11)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AL(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(12)){
+        state.badsquares.splice((state.badsquares.indexOf(12)))
+        document.getElementById(12).style="background-color: blue";
+        state.endsquares.push(12)
+    }
+    else{
+        if (state.endsquares.includes(12)){
+            document.getElementById(12).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(12)))
+       
+            }
+        
+            else{
+                state.badsquares.push(12)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(12)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(12)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+function AM(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(13)){
+        state.badsquares.splice((state.badsquares.indexOf(13)))
+        document.getElementById(13).style="background-color: blue";
+        state.endsquares.push(13)
+    }
+    else{
+        if (state.endsquares.includes(13)){
+            document.getElementById(13).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(13)))
+       
+            }
+        
+            else{
+                state.badsquares.push(13)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(13)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(13)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+function AN(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(14)){
+        state.badsquares.splice((state.badsquares.indexOf(14)))
+        document.getElementById(14).style="background-color: blue";
+        state.endsquares.push(14)
+    }
+    else{
+        if (state.endsquares.includes(14)){
+            document.getElementById(14).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(14)))
+       
+            }
+        
+            else{
+                state.badsquares.push(14)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(14)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(14)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+function AO(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(15)){
+        state.badsquares.splice((state.badsquares.indexOf(15)))
+        document.getElementById(15).style="background-color: blue";
+        state.endsquares.push(15)
+    }
+    else{
+        if (state.endsquares.includes(15)){
+            document.getElementById(15).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(15)))
+       
+            }
+        
+            else{
+                state.badsquares.push(15)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(15)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(15)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+function AP(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(16)){
+        state.badsquares.splice((state.badsquares.indexOf(16)))
+        document.getElementById(16).style="background-color: blue";
+        state.endsquares.push(16)
+    }
+    else{
+        if (state.endsquares.includes(16)){
+            document.getElementById(16).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(16)))
+       
+            }
+        
+            else{
+                state.badsquares.push(16)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(16)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(16)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+function AQ(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(17)){
+        state.badsquares.splice((state.badsquares.indexOf(17)))
+        document.getElementById(17).style="background-color: blue";
+        state.endsquares.push(17)
+    }
+    else{
+        if (state.endsquares.includes(17)){
+            document.getElementById(17).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(17)))
+       
+            }
+        
+            else{
+                state.badsquares.push(17)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(17)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(17)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AR(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(18)){
+        state.badsquares.splice((state.badsquares.indexOf(18)))
+        document.getElementById(18).style="background-color: blue";
+        state.endsquares.push(18)
+    }
+    else{
+        if (state.endsquares.includes(18)){
+            document.getElementById(18).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(18)))
+       
+            }
+        
+            else{
+                state.badsquares.push(18)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(18)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(18)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+function AS(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(19)){
+        state.badsquares.splice((state.badsquares.indexOf(19)))
+        document.getElementById(19).style="background-color: blue";
+        state.endsquares.push(19)
+    }
+    else{
+        if (state.endsquares.includes(19)){
+            document.getElementById(19).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(19)))
+       
+            }
+        
+            else{
+                state.badsquares.push(19)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(19)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(19)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AT(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(20)){
+        state.badsquares.splice((state.badsquares.indexOf(20)))
+        document.getElementById(20).style="background-color: blue";
+        state.endsquares.push(20)
+    }
+    else{
+        if (state.endsquares.includes(20)){
+            document.getElementById(20).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(20)))
+       
+            }
+        
+            else{
+                state.badsquares.push(20)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(20)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(20)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AU(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(21)){
+        state.badsquares.splice((state.badsquares.indexOf(21)))
+        document.getElementById(21).style="background-color: blue";
+        state.endsquares.push(21)
+    }
+    else{
+        if (state.endsquares.includes(21)){
+            document.getElementById(21).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(21)))
+       
+            }
+        
+            else{
+                state.badsquares.push(21)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(21)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(21)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AV(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(22)){
+        state.badsquares.splice((state.badsquares.indexOf(22)))
+        document.getElementById(22).style="background-color: blue";
+        state.endsquares.push(22)
+    }
+    else{
+        if (state.endsquares.includes(22)){
+            document.getElementById(22).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(22)))
+       
+            }
+        
+            else{
+                state.badsquares.push(22)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(22)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(22)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AW(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(23)){
+        state.badsquares.splice((state.badsquares.indexOf(23)))
+        document.getElementById(23).style="background-color: blue";
+        state.endsquares.push(23)
+    }
+    else{
+        if (state.endsquares.includes(23)){
+            document.getElementById(23).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(23)))
+       
+            }
+        
+            else{
+                state.badsquares.push(23)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(23)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(23)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AX(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(24)){
+        state.badsquares.splice((state.badsquares.indexOf(24)))
+        document.getElementById(24).style="background-color: blue";
+        state.endsquares.push(24)
+    }
+    else{
+        if (state.endsquares.includes(24)){
+            document.getElementById(24).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(24)))
+       
+            }
+        
+            else{
+                state.badsquares.push(24)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(24)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(24)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AY(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(25)){
+        state.badsquares.splice((state.badsquares.indexOf(25)))
+        document.getElementById(25).style="background-color: blue";
+        state.endsquares.push(25)
+    }
+    else{
+        if (state.endsquares.includes(25)){
+            document.getElementById(25).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(25)))
+       
+            }
+        
+            else{
+                state.badsquares.push(25)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(25)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(25)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function AZ(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(26)){
+        state.badsquares.splice((state.badsquares.indexOf(26)))
+        document.getElementById(26).style="background-color: blue";
+        state.endsquares.push(26)
+    }
+    else{
+        if (state.endsquares.includes(26)){
+            document.getElementById(26).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(26)))
+       
+            }
+        
+            else{
+                state.badsquares.push(26)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(26)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(26)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function BA(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(27)){
+        state.badsquares.splice((state.badsquares.indexOf(27)))
+        document.getElementById(27).style="background-color: blue";
+        state.endsquares.push(27)
+    }
+    else{
+        if (state.endsquares.includes(27)){
+            document.getElementById(27).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(27)))
+       
+            }
+        
+            else{
+                state.badsquares.push(27)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(27)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(27)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+function BB(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(28)){
+        state.badsquares.splice((state.badsquares.indexOf(28)))
+        document.getElementById(28).style="background-color: blue";
+        state.endsquares.push(28)
+    }
+    else{
+        if (state.endsquares.includes(28)){
+            document.getElementById(28).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(28)))
+       
+            }
+        
+            else{
+                state.badsquares.push(28)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(28)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(28)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+
+function BC(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(29)){
+        state.badsquares.splice((state.badsquares.indexOf(29)))
+        document.getElementById(29).style="background-color: blue";
+        state.endsquares.push(29)
+    }
+    else{
+        if (state.endsquares.includes(29)){
+            document.getElementById(29).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(29)))
+       
+            }
+        
+            else{
+                state.badsquares.push(29)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(29)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(29)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+
+function BD(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(30)){
+        state.badsquares.splice((state.badsquares.indexOf(30)))
+        document.getElementById(30).style="background-color: blue";
+        state.endsquares.push(30)
+    }
+    else{
+        if (state.endsquares.includes(30)){
+            document.getElementById(30).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(30)))
+       
+            }
+        
+            else{
+                state.badsquares.push(30)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(30)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(30)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function BE(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(31)){
+        state.badsquares.splice((state.badsquares.indexOf(31)))
+        document.getElementById(31).style="background-color: blue";
+        state.endsquares.push(31)
+    }
+    else{
+        if (state.endsquares.includes(31)){
+            document.getElementById(31).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(31)))
+       
+            }
+        
+            else{
+                state.badsquares.push(31)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(31)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(31)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function BF(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(32)){
+        state.badsquares.splice((state.badsquares.indexOf(32)))
+        document.getElementById(32).style="background-color: blue";
+        state.endsquares.push(32)
+    }
+    else{
+        if (state.endsquares.includes(32)){
+            document.getElementById(32).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(32)))
+       
+            }
+        
+            else{
+                state.badsquares.push(32)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(32)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(32)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function BG(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(33)){
+        state.badsquares.splice((state.badsquares.indexOf(33)))
+        document.getElementById(33).style="background-color: blue";
+        state.endsquares.push(33)
+    }
+    else{
+        if (state.endsquares.includes(33)){
+            document.getElementById(33).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(33)))
+       
+            }
+        
+            else{
+                state.badsquares.push(33)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(33)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(33)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+function BH(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(34)){
+        state.badsquares.splice((state.badsquares.indexOf(34)))
+        document.getElementById(34).style="background-color: blue";
+        state.endsquares.push(34)
+    }
+    else{
+        if (state.endsquares.includes(34)){
+            document.getElementById(34).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(34)))
+       
+            }
+        
+            else{
+                state.badsquares.push(34)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(34)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(34)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+function BI(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(35)){
+        state.badsquares.splice((state.badsquares.indexOf(35)))
+        document.getElementById(35).style="background-color: blue";
+        state.endsquares.push(35)
+    }
+    else{
+        if (state.endsquares.includes(35)){
+            document.getElementById(35).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(35)))
+       
+            }
+        
+            else{
+                state.badsquares.push(35)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(35)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(35)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function BJ(){
+    if (state.modeswap==1){
+    if (state.edite = 1){
+        state.jjjjjj=2
+    }
+    if (state.badsquares.includes(36)){
+        state.badsquares.splice((state.badsquares.indexOf(36)))
+        document.getElementById(36).style="background-color: blue";
+        state.endsquares.push(36)
+    }
+    else{
+        if (state.endsquares.includes(36)){
+            document.getElementById(36).style="background-color: transparent";
+            state.endsquares.splice((state.endsquares.indexOf(36)))
+       
+            }
+        
+            else{
+                state.badsquares.push(36)
+                state.ertysdf=0
+            }
+            
+        }
+            if (state.badsquares.includes(36)){
+ state.ertysdf=0
+            }
+            else{
+                if (state.endsquares.includes(36)){
+                     state.ertysdf=0
+                }
+                
+                else{
+           
+                }
+                
+            }
+         
+    
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+    }
+}
+
+function render(){
+    for (let stepw = 1; stepw < (36); stepw++) {
+            document.getElementById(stepw).style="background-color: transparent";
+        }
+
+        for (let step = 0; step < (state.endsquares.length); step++) {
+            document.getElementById(state.endsquares[step]).style="background-color: blue";
+        }
+
+    for (let step = 0; step < (state.badsquares.length); step++) {
+            document.getElementById(state.badsquares[step]).style="background-color: black";
+        }
+
+        for (let step = 0; step < (state.endsquares.length); step++) {
+            document.getElementById(state.endsquares[step]).style="background-color: blue";
+        }
+
+
+            
+        state.playerpos=state.startsquare
+        document.getElementById(state.playerpos).style="background-color: limegreen";
+
+        for (let step = 0; step < (state.endsquares.length); step++) {
+            document.getElementById(state.endsquares[step]).style="background-color: blue";
+        }
+}
+
+
+
+function clearing(){
+    state.badsquares=[
+        
+    ]
+    state.endsquares=[]
+    
+        
+        render()
+}
+
+
+
+
+
+function levelone(){
+
+    if (state.modeswap == 1){
+        Modeswap()
+    }    
+
+    if (state.modeswap == 0){
+    Modeswap()
+    Modeswap()
+}    
+
+
+    
+clearing()
+
+    //Level data
+    state.badsquares=[
+            1,
+            8,
+            3,
+            25,
+            1
+            ]
+
+        state.startsquare=31
+
+        state.endsquares=[36]    
+
+        render()
+
+}
+
+function leveltwo(){
+
+if (state.modeswap == 1){
+    Modeswap()
+}    
+
+if (state.modeswap == 0){
+    Modeswap()
+    Modeswap()
+}    
+
+clearing()
+
+//Level data
+state.badsquares=[
+        1,
+        5,
+        9,
+        12,
+        14,
+        16,
+        25,
+        33,
+        21,
+        29
+        ]
+
+    state.startsquare=31
+
+    state.endsquares=[6]   
+    
+    render()
+
+
+}
+
+
+function levelthree(){
+
+if (state.modeswap == 1){
+    Modeswap()
+}    
+
+if (state.modeswap == 0){
+    Modeswap()
+    Modeswap()
+}    
+
+clearing()
+
+//Level data
+state.badsquares=[
+        2,
+        8,
+        14,
+        20,
+        26,
+        
+      
+        26,
+        34,
+        28,
+        22,
+        14,
+        16,
+        10,
+        6,
+        12,
+        18,
+        24,
+        30
+        
+
+        
+        
+
+
+        ]
+
+    state.startsquare=1
+
+    state.endsquares=[36]   
+    
+    render()
+                  
+}
+
+function levelfour(){
+
+if (state.modeswap == 1){
+    Modeswap()
+}    
+
+if (state.modeswap == 0){
+    Modeswap()
+    Modeswap()
+}    
+
+clearing()
+
+//Level data
+state.badsquares=[
+        14,
+        26,
+        2,
+        10,
+        26,
+        6,
+        18,
+      30,
+      
+        34,
+        22
+        //14,
+       // 16,
+       // 10,
+       // 6,
+       // 12,
+       // 18,
+       // 24,
+       // 30
+        
+
+        
+        
+
+
+        ]
+
+    state.startsquare=13
+
+    state.endsquares=[24,12] 
+    
+    render()
+                  
+}
+            </script>
